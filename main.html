@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./src/output.css">
+</head>
+
+<body>
+   
+    <div class="bg-slate-600 px-2 mx-2 py-1 my-1">
+        <h1 class=" mx-5 my-5 rounded-lg font-semibold bg-gray-300 text-cyan-500 py-3 text-center">လစာတွက်ချက်ခြင်း</h1>
+        <div class="flex justify-between">
+            <select onchange="constructTable()" class="bg-blue-400 rounded-xl px-1" name="" id="monthName">
+                <option value="Jan">January</option>
+                <option value="Feb">February</option>
+                <option value="Mar">March</option>
+                <option value="Apr">April</option>
+                <option value="May">May</option>
+                <option value="Jun">June</option>
+                <option value="Jul">July</option>
+                <option value="Aug">August</option>
+                <option value="Sep">September</option>
+                <option value="Oct">October</option>
+                <option value="Nov">November</option>
+                <option value="Dec">December</option>
+            </select>
+            <span><input onchange="Calculate()" class="OT_price" type="number" step="5" min="50" max="75" value="60" placeholder=" OT Price"></span>
+        </div>
+        <table class="worktable flex justify-center border-green-500"
+
+        </table>
+        <button onclick="Calculate()" class="p-2 m-2 bg-cyan-400 text-center rounded-lg">Calculate</button>
+        <span class="salary text-xl text-white bg-gray-600"></span>
+    </div>
+
+<script src="script.js"></script>
+</body>
+
+</html>
