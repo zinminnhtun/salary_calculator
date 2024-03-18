@@ -1,13 +1,20 @@
-
 let table = document.querySelector(".worktable")
-
+let displayText = document.querySelector(".display_text")
 let year = Date().split(' ')[3]
-let currentMonth = Date().split(' ')[1]
+
+
 
 let date = Date().split(' ')[2]
 let hour = Date().split(' ')[4].split(':')[0]
 let minute = Date().split(' ')[4].split(':')[1]
-
+let currentMonth = Date().split(' ')[1]
+let shortMonths = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Novr','Dec']
+let months = ['January','February','March','April','May','June','July','August','September','October','November','December']
+currentMonth = shortMonths[(date < 15 ? shortMonths.findIndex((x=>x==currentMonth))-1 : shortMonths.findIndex((x=>x==currentMonth))) ]
+// currentMonth = shortMonths.find((mon) => {
+//     return mon == currentMonth
+// });
+console.log(currentMonth)
 document.getElementById("monthName").value = currentMonth;
 
 function constructTable(){
@@ -30,7 +37,7 @@ function constructTable(){
     for(let i = 0; i <= totalDaysInmonth-1; i++){
         let trForOneday = `<tr class=""><td class="bg-white text-green-500 py-1 pl-5 pr-4 border-2 border-green-500"> ${i+1} </td>
                    <td class="bg-white text-green-500 py-1 border-2 border-green-500">
-                    <select name="" id="day${i+1}Start" class="rounded-lg focus-visible:bg-gray-700 focus-visible:border-collapse text-center">
+                    <select onchange="Calculate()" name="" id="day${i+1}Start" class="rounded-lg focus-visible:bg-gray-700 focus-visible:border-collapse text-center">
                         <!-- <option value="06:00">06:00</option> -->
                         <option value="06:30">06:30</option>
                         <option value="07:00" selected>07:00</option>
@@ -41,7 +48,7 @@ function constructTable(){
                     </select>
                    </td>
                    <td class="bg-white text-green-500 py-1 border-2 border-green-500">
-                    <select id="day${i+1}End" name="" class="rounded-lg focus-visible:bg-gray-700 focus-visible:border-collapse text-center">
+                    <select onchange="Calculate()" id="day${i+1}End" name="" class="rounded-lg focus-visible:bg-gray-700 focus-visible:border-collapse text-center">
                         <option class="text-blue-500" value="11:30">11:30</option>
                         <option class="text-green-500" value="16:30">16:30</option>
                         <option class="text-green-500" value="17:00">17:00</option>
@@ -87,10 +94,11 @@ function constructTable(){
     
                     </select>
                    </td>
-                   <td class="bg-white text-green-500 py-1 border-2 border-green-500 "><input class="w-14 rounded-lg focus-visible:bg-gray-700 focus-visible:border-collapse text-center" id="day${i+1}ExtraOT" step="0.5" min="0" value="0" type="number" placeholder="extra OT" class="rounded-lg focus-visible:bg-gray-700 focus-visible:border-collapse text-center"></td></tr>`
+                   <td class="bg-white text-green-500 py-1 border-2 border-green-500 "><input onchange="Calculate()" class="w-14 rounded-lg focus-visible:bg-gray-700 focus-visible:border-collapse text-center" id="day${i+1}ExtraOT" step="0.5" min="0" value="0" type="number" placeholder="extra OT" class="rounded-lg focus-visible:bg-gray-700 focus-visible:border-collapse text-center"></td></tr>`
                    htmlTags+= trForOneday;
                 }
                 table.innerHTML = htmlTags;
+               
                 
 }
 constructTable()
@@ -141,6 +149,8 @@ function Calculate(){
     let displaySalary = document.querySelector(".salary")
     displaySalary.innerHTML = salary
     console.log(OTPricePerOneHour)
+     // display Text
+     displayText.innerHTML = `${currentMonth} အတွက် လစာ = ${salary} `
 } 
 
 
