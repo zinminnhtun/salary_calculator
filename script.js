@@ -1,5 +1,6 @@
 import { name } from "./modules/localStorageData/store.js";
 console.log(name())
+
 let table = document.querySelector(".worktable")
 let displayText = document.querySelector(".display_text")
 let MonthName = document.getElementById("monthName").value
@@ -26,6 +27,7 @@ function constructTable(){
     
     let month = MonthName;
     console.log(month)
+    let totalDaysInmonth;
     if(month === "Sep" || month === 'Apr' || month === "Jun" || month === "Nov" ){
         totalDaysInmonth = 30
     }else if(month === "Feb"){
