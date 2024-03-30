@@ -1,5 +1,8 @@
+import { name } from "./modules/localStorageData/store.js";
+console.log(name())
 let table = document.querySelector(".worktable")
 let displayText = document.querySelector(".display_text")
+let MonthName = document.getElementById("monthName").value
 let year = Date().split(' ')[3]
 
 
@@ -10,16 +13,18 @@ let minute = Date().split(' ')[4].split(':')[1]
 let currentMonth = Date().split(' ')[1]
 let shortMonths = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Novr','Dec']
 let months = ['January','February','March','April','May','June','July','August','September','October','November','December']
-currentMonth = shortMonths[(date < 15 ? shortMonths.findIndex((x=>x==currentMonth))-1 : shortMonths.findIndex((x=>x==currentMonth))) ]
+let monthsInMyanmar = ['ဇန်နဝါရီ','ဖေဖော်ဝါရီ','မတ်','ဧပြီ','မေ','ဇွန်','ဇူလိုင်','သြဂုတ်','စက်တင်ဘာ','အောက်တိုဘာ','နိုဝင်ဘာ','ဒီဇင်ဘာ']
+let currentMonthIndex = (date < 15 ? shortMonths.findIndex((x=>x==currentMonth))-1 : shortMonths.findIndex((x=>x==currentMonth)))
+currentMonth = shortMonths[currentMonthIndex]
 // currentMonth = shortMonths.find((mon) => {
 //     return mon == currentMonth
 // });
 console.log(currentMonth)
-document.getElementById("monthName").value = currentMonth;
+MonthName = currentMonth;
 
 function constructTable(){
     
-    let month = document.getElementById("monthName").value;
+    let month = MonthName;
     console.log(month)
     if(month === "Sep" || month === 'Apr' || month === "Jun" || month === "Nov" ){
         totalDaysInmonth = 30
@@ -150,27 +155,8 @@ function Calculate(){
     displaySalary.innerHTML = salary
     console.log(OTPricePerOneHour)
      // display Text
-     displayText.innerHTML = `${currentMonth} အတွက် လစာ = ${salary} `
+     displayText.innerHTML = `${MonthName} အတွက် လစာ = ${salary} `
 } 
 
-
-// let startwork = document.querySelector('.startworktime')
-// let stopwork = document.querySelector('.stopworktime')
-
-// let startworktime = function(){
-//     let startworkhour = startwork.value.split(":")
-//     startworkhour = parseFloat(startworkhour[0])+parseFloat(startworkhour[1]/60)
-//     return startworkhour
-// }
-
-// let stopworktime = function(){
-//    let stopworkhour = stopwork.value.split(":")
-//     stopworkhour = parseFloat(stopworkhour[0])+parseFloat(stopworkhour[1]/60)
-//     return stopworkhour 
-// }
-// let totalWorkHour = function(){
-//     let disp = document.querySelector('.disp')
-//     disp.innerHTML = stopworktime() - startworktime();
-// }
 
 
