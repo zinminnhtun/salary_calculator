@@ -1,18 +1,14 @@
-import { name } from "./modules/localStorageData/store.js";
-console.log(name())
+
 
 let table = document.querySelector(".worktable")
 let displayText = document.querySelector(".display_text")
 let MonthName = document.getElementById("monthName").value
 let year = Date().split(' ')[3]
-
-
-
 let date = Date().split(' ')[2]
 let hour = Date().split(' ')[4].split(':')[0]
 let minute = Date().split(' ')[4].split(':')[1]
 let currentMonth = Date().split(' ')[1]
-let shortMonths = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Novr','Dec']
+let shortMonths = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
 let months = ['January','February','March','April','May','June','July','August','September','October','November','December']
 let monthsInMyanmar = ['ဇန်နဝါရီ','ဖေဖော်ဝါရီ','မတ်','ဧပြီ','မေ','ဇွန်','ဇူလိုင်','သြဂုတ်','စက်တင်ဘာ','အောက်တိုဘာ','နိုဝင်ဘာ','ဒီဇင်ဘာ']
 let currentMonthIndex = (date < 15 ? shortMonths.findIndex((x=>x==currentMonth))-1 : shortMonths.findIndex((x=>x==currentMonth)))
@@ -23,11 +19,11 @@ currentMonth = shortMonths[currentMonthIndex]
 console.log(currentMonth)
 MonthName = currentMonth;
 
+let totalDaysInmonth;
 function constructTable(){
     
     let month = MonthName;
     console.log(month)
-    let totalDaysInmonth;
     if(month === "Sep" || month === 'Apr' || month === "Jun" || month === "Nov" ){
         totalDaysInmonth = 30
     }else if(month === "Feb"){
